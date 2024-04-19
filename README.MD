@@ -13,3 +13,5 @@
     - enter grafana: http://localhost:3000/dashboards
     - add datasource loki
     - enter panel select label {my-app-log} > query inspector > run query
+
+http://127.0.0.1:8080/persons

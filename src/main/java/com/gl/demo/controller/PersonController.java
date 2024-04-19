@@ -33,9 +33,13 @@ public class PersonController {
     @GetMapping("/name/{firstName}/{lastName}")
     public List<Person> findByName(@PathVariable("firstName") String firstName,
                                    @PathVariable("lastName") String lastName) {
-        return persons.stream()
-                .filter(it -> it.getFirstName().equals(firstName) && it.getLastName().equals(lastName))
-                .toList();
+        log.info("---------------------");
+        List<Person> a= new ArrayList<>();
+        a.add(new Person());
+        return a;
+//        return persons.stream()
+//                .filter(it -> it.getFirstName().equals(firstName) && it.getLastName().equals(lastName))
+//                .toList();
     }
 
     @PostMapping
@@ -49,20 +53,20 @@ public class PersonController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Long id) {
-        Person p = persons.stream().filter(it -> it.getId().equals(id)).findFirst().orElseThrow();
-        persons.remove(p);
-        log.info(marker(p.getId()), "Person successfully removed {}", p.getId());
+//        Person p = persons.stream().filter(it -> it.getId().equals(id)).findFirst().orElseThrow();
+//        persons.remove(p);
+//        log.info(marker(p.getId()), "Person successfully removed {}", p.getId());
     }
 
-    @PutMapping
-    public void update(@RequestBody Person p) {
-        Person person = persons.stream()
-                .filter(it -> it.getId().equals(p.getId()))
-                .findFirst()
-                .orElseThrow();
-        persons.set(persons.indexOf(person), p);
-        log.info(marker(p.getId()), "Person successfully updated");
-    }
+//    @PutMapping
+//    public void update(@RequestBody Person p) {
+//        Person person = persons.stream()
+//                .filter(it -> it.getId().equals(p.getId()))
+//                .findFirst()
+//                .orElseThrow();
+//        persons.set(persons.indexOf(person), p);
+//        log.info(marker(p.getId()), "Person successfully updated");
+//    }
 
     LabelMarker marker(Object value) {
         return LabelMarker.of("personId", () -> String.valueOf(value));
