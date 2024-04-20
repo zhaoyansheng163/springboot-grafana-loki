@@ -34,12 +34,9 @@ public class PersonController {
     public List<Person> findByName(@PathVariable("firstName") String firstName,
                                    @PathVariable("lastName") String lastName) {
         log.info("---------------------");
-        List<Person> a= new ArrayList<>();
-        a.add(new Person());
-        return a;
-//        return persons.stream()
-//                .filter(it -> it.getFirstName().equals(firstName) && it.getLastName().equals(lastName))
-//                .toList();
+        return persons.stream()
+                .filter(it -> it.getFirstName().equals(firstName) && it.getLastName().equals(lastName))
+                .toList();
     }
 
     @PostMapping
